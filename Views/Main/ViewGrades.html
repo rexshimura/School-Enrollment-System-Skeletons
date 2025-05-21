@@ -33,6 +33,13 @@
             font-weight: 500;
             color: #343a40; /* Darker text */
         }
+        /* Style for individual lines within the consolidated info box */
+        .info-display-box p {
+            margin-bottom: 5px; /* Smaller margin between lines */
+        }
+        .info-display-box p:last-child {
+            margin-bottom: 0; /* No margin below the last line */
+        }
     </style>
 </head>
 <body>
@@ -43,7 +50,9 @@
         <p class="lead">Select the academic year and semester to view your grades for your current course.</p>
 
         <div class="info-display-box">
-            Current Course: <span id="currentCourseDisplay">Bachelor of Science in Information Technology</span>
+            <p>Student ID: <span id="studentIdDisplay">2023-0001</span></p>
+            <p>Student Name: <span id="studentNameDisplay">Juan Dela Cruz</span></p>
+            <p>Current Course: <span id="currentCourseDisplay">Bachelor of Science in Information Technology</span></p>
         </div>
 
         <div class="card mt-4 mb-4">
@@ -112,7 +121,7 @@
                                 <td>2.25</td>
                                 <td>Prof. Lim</td>
                             </tr>
-                            </tbody>
+                        </tbody>
                     </table>
                     <p class="card-text mt-4"><strong>Total Subjects:</strong> <span id="totalSubjectsDisplay">3</span></p>
                     <h5 class="card-title" id="overallGpaDisplay">Overall GPA: 3.75</h5>
@@ -158,7 +167,9 @@
                 });
 
             // --- Grades Display Logic ---
-            const currentCourseDisplay = document.getElementById('currentCourseDisplay'); // New
+            const studentIdDisplay = document.getElementById('studentIdDisplay');
+            const studentNameDisplay = document.getElementById('studentNameDisplay');
+            const currentCourseDisplay = document.getElementById('currentCourseDisplay');
             const yearSelect = document.getElementById('yearSelect');
             const semesterSelect = document.getElementById('semesterSelect');
             const viewGradesBtn = document.getElementById('viewGradesBtn');
@@ -168,26 +179,27 @@
             const overallGpaDisplay = document.getElementById('overallGpaDisplay');
             const totalSubjectsDisplay = document.getElementById('totalSubjectsDisplay');
 
-            // Set current course from a static value (in real app, this would be dynamic)
-            // For now, it's just the default text in the HTML.
-            // currentCourseDisplay.textContent = "Bachelor of Science in Information Technology"; 
+            // You can set these dynamically from a backend or user session
+            studentIdDisplay.textContent = "2023-0001"; // Example static data
+            studentNameDisplay.textContent = "Juan Dela Cruz"; // Example static data
+            currentCourseDisplay.textContent = "Bachelor of Science in Information Technology"; // Example static data
 
             viewGradesBtn.addEventListener('click', function() {
                 const selectedYear = yearSelect.value;
                 const selectedSemester = semesterSelect.value;
-                const displayedCourse = currentCourseDisplay.textContent; // Get the displayed course
+                const displayedCourse = currentCourseDisplay.textContent;
 
                 if (selectedYear === "" || selectedSemester === "") {
                     alert('Please select Year and Semester.');
                     return;
                 }
 
-                // Update the title to include the displayed course, year, and semester
                 gradesTermTitle.textContent = `${displayedCourse} - ${selectedYear} : ${selectedSemester} Grades`;
                 
                 const numSubjects = gradesTableBody.children.length;
                 totalSubjectsDisplay.textContent = numSubjects;
-                overallGpaDisplay.textContent = 'Overall GPA: 3.75';
+                // In a real application, calculate GPA based on fetched grades
+                overallGpaDisplay.textContent = 'Overall GPA: 3.75'; 
 
                 gradesDisplayArea.style.display = 'block';
             });

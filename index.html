@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cebu Technological University | Student Enrollment System</title>
+    <link rel="stylesheet" href="./Content/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Define custom colors for the buttons and other elements */
+            --button-blue: #007bff; /* Primary action button color */
+            --button-blue-hover: #0056b3;
+            --button-purple: #6f42c5; /* Secondary action button color */
+            --button-purple-hover: #5b36a8;
+
+            --light-grey: #f8f9fa;
+            --text-dark: #343a40;
+            --text-light: #6c757d;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            background-color: var(--light-grey);
+            overflow: hidden; /* Prevents scrollbars from animations */
+        }
+
+        /* Left Section: Content */
+        .content-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            background-color: #ffffff;
+            /* Stronger, more diffused shadow on the right edge */
+            box-shadow: 20px 0 50px -15px rgba(0, 0, 0, 0.15);
+            z-index: 1;
+            animation: slideInLeft 1s ease-out forwards;
+            opacity: 0;
+            transform: translateX(-50px);
+            text-align: left;
+        }
+
+        .content-wrapper {
+            max-width: 500px;
+            padding: 20px; /* Provides inner spacing within the content box */
+        }
+
+        .content-section h1 {
+            font-size: 3rem;
+            color: var(--button-blue-hover);
+            margin-bottom: 5px; /* Reduced margin to bring subtitle closer */
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        /* New style for the subtitle/system name */
+        .system-subtitle {
+            font-size: 1.5rem; /* A good size for a prominent subtitle */
+            color: var(--text-dark); /* Slightly darker than paragraph for emphasis */
+            margin-bottom: 25px; /* Space between subtitle and paragraph */
+            font-weight: 500; /* Medium weight */
+            line-height: 1.4;
+        }
+
+        .content-section p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            color: var(--text-light);
+        }
+
+        .btn-group-main {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        /* Custom Button Styling */
+        .btn-custom {
+            font-size: 1rem;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            letter-spacing: 0.8px;
+            min-width: 160px;
+            color: white;
+            border: none;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+            cursor: pointer; /* Explicitly set cursor to pointer for button */
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-4px); /* Lift effect on hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+        }
+
+        /* Specific Button Colors */
+        .btn-login-custom {
+            background-color: var(--button-blue);
+        }
+        .btn-login-custom:hover {
+            background-color: var(--button-blue-hover);
+        }
+
+        .btn-signup-custom {
+            background-color: var(--button-purple);
+        }
+        .btn-signup-custom:hover {
+            background-color: var(--button-purple-hover);
+        }
+
+
+        /* Right Section: Image */
+        .image-section {
+            flex: 1;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            position: relative;
+            animation: slideInRight 1s ease-out forwards;
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        /* Animations */
+        @keyframes slideInLeft {
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            body {
+                flex-direction: column;
+                min-height: auto;
+            }
+            .content-section {
+                box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+                padding: 50px 30px;
+                animation: fadeInScale 0.9s ease-out forwards;
+                transform: translateY(20px);
+                text-align: center;
+            }
+            .image-section {
+                min-height: 350px;
+                width: 100%;
+                animation: fadeInScale 0.9s ease-out forwards;
+                transform: translateY(20px);
+            }
+            .content-section h1 {
+                font-size: 2.5rem;
+                margin-bottom: 5px; /* Adjust margin for smaller screens */
+            }
+            .system-subtitle {
+                font-size: 1.3rem; /* Adjust for smaller screens */
+                margin-bottom: 20px; /* Adjust margin for smaller screens */
+            }
+            .btn-group-main {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .content-section {
+                padding: 30px 15px;
+            }
+            .content-section h1 {
+                font-size: 1.8rem;
+            }
+            .system-subtitle {
+                font-size: 1.1rem; /* Further adjust for very small screens */
+                margin-bottom: 15px;
+            }
+            .content-section p {
+                font-size: 0.9rem;
+            }
+            .btn-group-main {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .btn-custom {
+                width: 100%;
+                padding: 10px 20px;
+            }
+            .image-section {
+                min-height: 250px;
+            }
+        }
+
+        /* Fallback for JS disabled or errors */
+        body:not(.js-loaded) .content-section,
+        body:not(.js-loaded) .image-section {
+            opacity: 1;
+            transform: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-section">
+        <div class="content-wrapper">
+            <h1>Cebu Technological University</h1>
+            <p class="system-subtitle">Student Enrollment System</p>
+            <p>Welcome to the CTU Enrollment System, designed to empower aspiring minds. Explore our leading-edge degree programs, seamlessly manage your application, and step into a future of innovation, research, and community-responsive education.</p>
+            <div class="btn-group-main">
+                <a href="/Views/Auth/Login.html" aria-label="Login to CTU Student Portal"><button class="btn btn-custom btn-login-custom">Login to Portal</button></a>
+                <a href="/Views/Auth/SignUp.html" aria-label="Apply now for CTU Enrollment"><button class="btn btn-custom btn-signup-custom">Apply Now</button></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="image-section" style="background-image: url('image_6dbc1d.png');">
+    </div>
+
+    <script src="./Content/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('js-loaded');
+        });
+    </script>
+</body>
+</html>

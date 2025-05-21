@@ -3,30 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Login</title>
-    <link rel="stylesheet" href="../../Content/bootstrap.min.css">
+    <title>Teacher Login</title>
+    <link rel="stylesheet" href="../../../Content/bootstrap.min.css">
     <style>
         body {
             display: flex;
-            flex-direction: column; /* Changed to column to stack elements */
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             background-color: #f8f9fa;
         }
-        .login-header-nav-wrapper { /* New wrapper for the header nav */
-            width: 100%; /* Make it span full width */
-            background-color: #e9ecef; /* Light background for the header nav area */
-            padding: 15px 0; /* Add some padding */
-            box-shadow: 0 2px 4px rgba(0,0,0,.05); /* Subtle shadow */
-            margin-bottom: 30px; /* Space between header nav and login box */
-            position: absolute; /* Position absolutely to move it to the top */
+        .login-header-nav-wrapper {
+            width: 100%;
+            background-color: #e9ecef;
+            padding: 15px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,.05);
+            margin-bottom: 30px;
+            position: absolute;
             top: 0;
             left: 0;
         }
         .login-header-nav {
-            max-width: 400px; /* Match login container width */
-            margin: 0 auto; /* Center it */
+            max-width: 400px;
+            margin: 0 auto;
             text-align: center;
         }
         .login-header-nav a {
@@ -50,33 +50,32 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 400px;
-            margin-top: 80px; /* Add margin to account for the header nav above */
+            margin-top: 80px; /* Adjusted margin */
         }
     </style>
 </head>
 <body>
     <div class="login-header-nav-wrapper">
         <div class="login-header-nav">
-            <a href="Login.html" class="active">Student</a> |
-            <a href="LoginTeacher.html">Teacher</a> |
+            <a href="Login.html">Student</a> |
+            <a href="LoginTeacher.html" class="active">Teacher</a> |
             <a href="LoginProgramHead.html">Program Head</a> |
             <a href="LoginAdmin.html">Admin</a>
         </div>
     </div>
 
     <div class="login-container">
-        <h2 class="text-center mb-4">Student Login</h2>
+        <h2 class="text-center mb-4">Teacher Login</h2>
         <form>
             <div class="mb-3">
-                <label for="idNumber" class="form-label">ID Number</label>
-                <input type="text" class="form-control" id="idNumber" placeholder="Enter ID Number" required>
+                <label for="teacherId" class="form-label">Teacher ID</label>
+                <input type="text" class="form-control" id="teacherId" placeholder="Enter Teacher ID" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" placeholder="Enter Password" required>
             </div>
             <button type="submit" class="btn btn-primary w-100">Login</button>
-            <p class="text-center mt-3">Don't have an account? <a href="SignUp.html">Sign Up</a></p>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

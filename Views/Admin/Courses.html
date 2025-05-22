@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Programs - Enrollment System</title>
+    <link rel="stylesheet" href="../../Content/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .content-section {
+            padding: 30px;
+            flex-grow: 1;
+        }
+        .course-form {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        .units-input {
+            max-width: 80px;
+        }
+        .action-buttons .btn {
+            margin-right: 5px;
+        }
+        .form-card {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="admin-header-placeholder"></div>
+
+    <div class="container content-section">
+        <h1 class="mb-4">Manage Courses</h1>
+        <p class="lead mb-4">Add, edit, or remove academic programs offered by the institution and view their course offerings by year and semester.</p>
+
+        <!-- Courses List Table -->
+        <div class="course-table mb-5">
+            <h3 class="mb-3">Courses List</h3>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>Course Code</th>
+                            <th>Course Category</th>
+                            <th>Descriptive Title</th>
+                            <th>Co-/Prerequisite</th>
+                            <th>Units</th>
+                            <th>Lec Hours</th>
+                            <th>Lab Hours</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>IT101</td>
+                            <td>Core</td>
+                            <td>Introduction to Computing</td>
+                            <td>None</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-sm btn-warning">Edit</button>
+                                <button class="btn btn-sm btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>CS201</td>
+                            <td>Major</td>
+                            <td>Data Structures and Algorithms</td>
+                            <td>IT101</td>
+                            <td>4</td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-sm btn-warning">Edit</button>
+                                <button class="btn btn-sm btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>MATH101</td>
+                            <td>General Education</td>
+                            <td>College Algebra</td>
+                            <td>None</td>
+                            <td>3</td>
+                            <td>3</td>
+                            <td>0</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-sm btn-warning">Edit</button>
+                                <button class="btn btn-sm btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn btn-success mt-3" onclick="location.href='AddProgram.html'">Add New Course</button>
+        </div>
+
+    </div>
+
+    <script src="../../Content/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Header Loading Logic (unchanged) ---
+            const headerPath = '../Shared/AdminHeader.html';
+            fetch(headerPath)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById('admin-header-placeholder').innerHTML = html;
+
+                    const currentPath = window.location.pathname;
+                    const currentPage = currentPath.substring(currentPath.lastIndexOf('/') + 1);
+                    const navLinks = document.querySelectorAll('#navbarNavAdmin .nav-link');
+                    navLinks.forEach(link => {
+                        const linkHref = link.getAttribute('href');
+                        const linkPage = linkHref.substring(linkHref.lastIndexOf('/') + 1);
+
+                        if (linkPage.toLowerCase() === currentPage.toLowerCase()) {
+                            link.classList.add('active');
+                            link.setAttribute('aria-current', 'page');
+                        } else {
+                            link.classList.remove('active');
+                            link.removeAttribute('aria-current');
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading Admin header:', error);
+                    document.getElementById('admin-header-placeholder').innerHTML = '<p style="color: red; text-align: center;">Failed to load navigation.</p>';
+                });
+
+            // Form validation and submission
+            document.getElementById('courseForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Here you would normally send the data to your backend
+                alert('Course saved successfully!');
+                // Reset form or update table would go here
+            });
+
+            // Unit calculation logic
+            document.getElementById('lectureUnits').addEventListener('change', updateTotalUnits);
+            document.getElementById('labUnits').addEventListener('change', updateTotalUnits);
+
+            function updateTotalUnits() {
+                const lecture = parseInt(document.getElementById('lectureUnits').value) || 0;
+                const lab = parseInt(document.getElementById('labUnits').value) || 0;
+                document.getElementById('totalUnits').value = lecture + lab;
+            }
+        });
+    </script>
+</body>
+</html>

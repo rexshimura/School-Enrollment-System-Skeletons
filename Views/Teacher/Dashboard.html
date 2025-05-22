@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program Head Dashboard</title>
+    <title>Teacher Dashboard</title>
     <link rel="stylesheet" href="../../Content/bootstrap.min.css">
     <style>
         body {
@@ -37,32 +37,18 @@
     </style>
 </head>
 <body>
-    <div id="programhead-header-placeholder"></div>
+    <div id="teacher-header-placeholder"></div>
 
     <div class="container content-section">
-        <h1 class="mb-4">Program Head Dashboard</h1>
-        <p class="lead">Welcome, Program Head! Here's a quick overview of your responsibilities.</p>
+        <h1 class="mb-4">Teacher Dashboard</h1>
+        <p class="lead">Welcome, Teacher! Here's a quick overview of your responsibilities.</p>
 
         <div class="row">
             <div class="col-md-4">
                 <div class="info-card">
-                    <h4>Enrollment Approvals</h4>
-                    <p>Review and approve pending student enrollments.</p>
-                    <a href="EnrollmentApproval.html" class="btn btn-primary">Go to Approvals</a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="info-card">
-                    <h4>Set Schedules</h4>
-                    <p>Manage and set course schedules for your program.</p>
-                    <a href="SetSchedules.html" class="btn btn-primary">Manage Schedules</a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="info-card">
-                    <h4>Student Management</h4>
-                    <p>Oversee faculty and staff assignments within your program.</p>
-                    <a href="StudentManagement.html" class="btn btn-primary">Manage Student</a>
+                    <h4>Classes</h4>
+                    <p>Manage and view class list for assigned your section.</p>
+                    <a href="Classes.html" class="btn btn-primary">View Classes</a>
                 </div>
             </div>
         </div>
@@ -72,7 +58,7 @@
     <script src="../../Content/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const headerPath = '../Shared/ProgramHeadHeader.html'; // Path relative to Views/Program-Head/
+            const headerPath = '../Shared/TeacherHeader.html'; // Path relative to Views/Program-Head/
 
             fetch(headerPath)
                 .then(response => {
@@ -82,12 +68,12 @@
                     return response.text();
                 })
                 .then(html => {
-                    document.getElementById('programhead-header-placeholder').innerHTML = html;
+                    document.getElementById('teacher-header-placeholder').innerHTML = html;
 
                     // Highlight active link in header
                     const currentPath = window.location.pathname;
                     const currentPage = currentPath.substring(currentPath.lastIndexOf('/') + 1);
-                    const navLinks = document.querySelectorAll('#navbarNavProgramHead .nav-link');
+                    const navLinks = document.querySelectorAll('#navbarNavTeacher .nav-link');
                     navLinks.forEach(link => {
                         const linkHref = link.getAttribute('href');
                         const linkPage = linkHref.substring(linkHref.lastIndexOf('/') + 1);
@@ -103,7 +89,7 @@
                 })
                 .catch(error => {
                     console.error('Error loading Program Head header:', error);
-                    document.getElementById('programhead-header-placeholder').innerHTML = '<p style="color: red; text-align: center;">Failed to load navigation.</p>';
+                    document.getElementById('teacher-header-placeholder').innerHTML = '<p style="color: red; text-align: center;">Failed to load navigation.</p>';
                 });
         });
     </script>

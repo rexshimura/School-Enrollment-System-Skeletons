@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program Head Dashboard</title>
+    <title>Teacher Dashboard</title>
     <link rel="stylesheet" href="../../Content/bootstrap.min.css">
+    <!-- Add jQuery before Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -12,11 +14,13 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            &::-webkit-scrollbar {
+                display: none;
+            }
         }
         .content-section {
             padding: 30px;
             flex-grow: 1;
-            margin-top: 56px; /* Adjust based on header height to prevent overlap */
         }
         .info-card {
             background-color: #ffffff;
@@ -40,36 +44,34 @@
     <div id="programhead-header-placeholder"></div>
 
     <div class="container content-section">
-        <h1 class="mb-4">Program Head Dashboard</h1>
-        <p class="lead">Welcome, Program Head! Here's a quick overview of your responsibilities.</p>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>Students</h1>
+        </div>
 
         <div class="row">
             <div class="col-md-4">
                 <div class="info-card">
-                    <h4>Enrollment Approvals</h4>
+                    <h4>Student List</h4>
                     <p>Review and approve pending student enrollments.</p>
-                    <a href="EnrollmentApproval.html" class="btn btn-primary">Go to Approvals</a>
+                    <a href="ViewStudentList.html" class="btn btn-primary">View All Students</a>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="info-card">
-                    <h4>Set Schedules</h4>
+                    <h4>Class Management</h4>
                     <p>Manage and set course schedules for your program.</p>
-                    <a href="SetSchedules.html" class="btn btn-primary">Manage Schedules</a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="info-card">
-                    <h4>Student Management</h4>
-                    <p>Oversee faculty and staff assignments within your program.</p>
-                    <a href="StudentManagement.html" class="btn btn-primary">Manage Student</a>
+                    <a href="ClassManagement.html" class="btn btn-primary">Manage Classes</a>
                 </div>
             </div>
         </div>
+    
+    </div>
 
-        </div>
-
+    <!-- JavaScript files in correct order -->
     <script src="../../Content/bootstrap.bundle.min.js"></script>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Then load Bootstrap bundle (includes Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const headerPath = '../Shared/ProgramHeadHeader.html'; // Path relative to Views/Program-Head/
